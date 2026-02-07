@@ -1,8 +1,11 @@
-"""Pydantic schemas for reports."""
+"""Pydantic schemas for reports (2303173 - Emon).
+
+Developer: Emon (2303173)
+"""
 
 from pydantic import BaseModel, ConfigDict
 from datetime import datetime
-from app.models.report import ReportStatus
+from app.models.m_2303173_report import ReportStatus
 
 
 class ReportCreate(BaseModel):

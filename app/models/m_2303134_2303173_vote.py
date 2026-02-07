@@ -1,4 +1,7 @@
-"""SQLAlchemy Vote model."""
+"""SQLAlchemy Vote model (2303134 - Arpon & 2303173 - Emon).
+
+Developers: Arpon (2303134), Emon (2303173)
+"""
 
 from sqlalchemy import Column, ForeignKey, Integer, Enum
 from sqlalchemy.orm import relationship

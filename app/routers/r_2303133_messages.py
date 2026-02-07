@@ -1,14 +1,16 @@
-"""Private messaging endpoints for user-to-user communication."""
+"""Private messaging endpoints for user-to-user communication.
+Developer: Tahsan (2303133)
+"""
 
 from fastapi import APIRouter, Depends, HTTPException, Query, status
 from sqlalchemy import or_
 from sqlalchemy.orm import Session
 
 from app.database import get_db
-from app.models.message import Message
-from app.models.user import User
-from app.routers.auth import get_current_user
-from app.schemas.message import MessageCreate, MessageOut
+from app.models.m_2303133_message import Message
+from app.models.m_2303147_user import User
+from app.routers.r_2303147_auth import get_current_user
+from app.schemas.s_2303133_message import MessageCreate, MessageOut
 
 router = APIRouter(prefix="/messages", tags=["messages"])
 
@@ -189,5 +191,3 @@ def delete_message(
     db.delete(message)
     db.commit()
     return {"message": "Successfully deleted message"}
-
-

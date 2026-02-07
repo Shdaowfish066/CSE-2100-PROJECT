@@ -1,4 +1,7 @@
-"""Pydantic schemas for users."""
+"""Pydantic schemas for users (2303147 - Shihab).
+
+Developer: Shihab (2303147)
+"""
 
 from typing import Optional
 

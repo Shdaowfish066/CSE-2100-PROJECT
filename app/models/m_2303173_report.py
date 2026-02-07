@@ -1,4 +1,7 @@
-"""SQLAlchemy Report model."""
+"""SQLAlchemy Report model (2303173 - Emon).
+
+Developer: Emon (2303173)
+"""
 
 from datetime import datetime
 import enum

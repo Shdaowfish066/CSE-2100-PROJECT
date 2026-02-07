@@ -1,15 +1,17 @@
-"""Content moderation and reporting endpoints."""
+"""Content moderation and reporting endpoints.
+Developer: Shihab (2303147)
+"""
 
 from fastapi import APIRouter, Depends, HTTPException, status
 from sqlalchemy.orm import Session
 
 from app.database import get_db
-from app.models.report import Report, ReportStatus
-from app.models.post import Post
-from app.models.comment import Comment
-from app.models.user import User
-from app.routers.auth import get_current_user
-from app.schemas.report import ReportCreate, ReportOut
+from app.models.m_2303173_report import Report, ReportStatus
+from app.models.m_2303134_post import Post
+from app.models.m_2303147_comment import Comment
+from app.models.m_2303147_user import User
+from app.routers.r_2303147_auth import get_current_user
+from app.schemas.s_2303173_report import ReportCreate, ReportOut
 
 router = APIRouter(prefix="/reports", tags=["reports"])
 

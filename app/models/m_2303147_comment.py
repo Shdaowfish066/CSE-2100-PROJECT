@@ -1,4 +1,7 @@
-"""SQLAlchemy Comment model."""
+"""SQLAlchemy Comment model (2303147 - Shihab).
+
+Developer: Shihab (2303147)
+"""
 
 from sqlalchemy import Column, ForeignKey, Integer, Text, String
 from sqlalchemy.orm import relationship

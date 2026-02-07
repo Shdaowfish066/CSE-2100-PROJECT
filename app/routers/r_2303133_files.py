@@ -1,4 +1,5 @@
 """File endpoints for managing file uploads and downloads.
+Developer: Tahsan (2303133)
 
 Note: Implement with Supabase storage for production use.
 """
@@ -7,10 +8,10 @@ from fastapi import APIRouter, Depends, HTTPException, status, UploadFile, File 
 from sqlalchemy.orm import Session
 
 from app.database import get_db
-from app.models.file import File
-from app.models.user import User
-from app.routers.auth import get_current_user
-from app.schemas.file import FileOut
+from app.models.m_2303133_file import File
+from app.models.m_2303147_user import User
+from app.routers.r_2303147_auth import get_current_user
+from app.schemas.s_2303133_file import FileOut
 from app.utils.storage import is_allowed_media, save_upload_file
 
 router = APIRouter(prefix="/files", tags=["files"])

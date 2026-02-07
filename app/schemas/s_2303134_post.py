@@ -1,4 +1,7 @@
-"""Pydantic schemas for posts."""
+"""Pydantic schemas for posts (2303134 - Arpon).
+
+Developer: Arpon (2303134)
+"""
 
 from pydantic import BaseModel, ConfigDict
 

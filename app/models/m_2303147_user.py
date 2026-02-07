@@ -1,4 +1,7 @@
-"""SQLAlchemy User model (dummy)."""
+"""SQLAlchemy User model (2303147 - Shihab).
+
+Developer: Shihab (2303147)
+"""
 
 from sqlalchemy import Boolean, Column, Integer, String
 

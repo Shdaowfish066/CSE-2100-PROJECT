@@ -9,8 +9,10 @@ from app.routers import (
     auth_router,
     posts_router,
     users_router,
-    votes_router,
+    votes_router_arpon,
+    votes_router_emon,
     comments_router,
+    comments_router_emon,
     messages_router,
     files_router,
     moderation_router,
@@ -42,8 +44,10 @@ async def validation_exception_handler(request: Request, exc: ValidationError):
 app.include_router(auth_router)
 app.include_router(posts_router)
 app.include_router(users_router)
-app.include_router(votes_router)
+app.include_router(votes_router_arpon)
+app.include_router(votes_router_emon)
 app.include_router(comments_router)
+app.include_router(comments_router_emon)
 app.include_router(messages_router)
 app.include_router(files_router)
 app.include_router(moderation_router)

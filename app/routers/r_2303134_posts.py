@@ -1,13 +1,15 @@
-"""Post CRUD endpoints for managing posts with title and content."""
+"""Post CRUD endpoints for managing posts with title and content.
+Developer: Arpon (2303134)
+"""
 
 from fastapi import APIRouter, Depends, HTTPException, status
 from sqlalchemy.orm import Session
 
 from app.database import get_db
-from app.models.post import Post
-from app.models.user import User
-from app.routers.auth import get_current_user
-from app.schemas.post import PostCreate, PostUpdate, PostOut
+from app.models.m_2303134_post import Post
+from app.models.m_2303147_user import User
+from app.routers.r_2303147_auth import get_current_user
+from app.schemas.s_2303134_post import PostCreate, PostUpdate, PostOut
 
 router = APIRouter(prefix="/posts", tags=["posts"])
 

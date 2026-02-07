@@ -1,12 +1,14 @@
-"""User profile management endpoints."""
+"""User profile management endpoints.
+Developer: Shihab (2303147)
+"""
 
 from fastapi import APIRouter, Depends, HTTPException, status
 from sqlalchemy.orm import Session
 
 from app.database import get_db
-from app.models.user import User
-from app.routers.auth import get_current_user
-from app.schemas.user import UserOut, UserUpdate
+from app.models.m_2303147_user import User
+from app.routers.r_2303147_auth import get_current_user
+from app.schemas.s_2303147_user import UserOut, UserUpdate
 
 router = APIRouter(prefix="/users", tags=["users"])
 
@@ -187,4 +189,3 @@ def delete_user(
     db.delete(user)
     db.commit()
     return {"message": "Successfully deleted user account"}
-

@@ -1,4 +1,7 @@
-"""SQLAlchemy Post model."""
+"""SQLAlchemy Post model (2303134 - Arpon).
+
+Developer: Arpon (2303134)
+"""
 
 from sqlalchemy import Column, ForeignKey, Integer, String, Text
 from sqlalchemy.orm import relationship

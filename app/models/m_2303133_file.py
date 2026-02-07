@@ -1,4 +1,7 @@
-"""SQLAlchemy File model."""
+"""SQLAlchemy File model (2303133 - Tahsan).
+
+Developer: Tahsan (2303133)
+"""
 
 from sqlalchemy import Column, ForeignKey, Integer, String
 from sqlalchemy.orm import relationship

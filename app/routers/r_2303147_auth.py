@@ -1,4 +1,6 @@
-"""Authentication endpoints for user registration and login."""
+"""Authentication endpoints for user registration and login.
+Developer: Shihab (2303147)
+"""
 
 from datetime import timedelta
 
@@ -7,11 +9,11 @@ from fastapi.security import HTTPBearer, HTTPAuthorizationCredentials
 from sqlalchemy.orm import Session
 
 from app.database import get_db
-from app.models.user import User
+from app.models.m_2303147_user import User
 from app.utils.auth import hash_password,verify_password,create_access_token,decode_access_token
 
 from app.config import settings
-from app.schemas.user import RegisterRequest,LoginRequest,LoginResponse,UserOut
+from app.schemas.s_2303147_user import RegisterRequest,LoginRequest,LoginResponse,UserOut
     
 
 router = APIRouter(prefix="/auth", tags=["auth"])

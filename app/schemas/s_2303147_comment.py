@@ -1,4 +1,7 @@
-"""Pydantic schemas for comments."""
+"""Pydantic schemas for comments (2303147 - Shihab).
+
+Developer: Shihab (2303147)
+"""
 
 from pydantic import BaseModel, ConfigDict
 

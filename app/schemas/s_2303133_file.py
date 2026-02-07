@@ -1,4 +1,7 @@
-"""Pydantic schemas for files."""
+"""Pydantic schemas for files (2303133 - Tahsan).
+
+Developer: Tahsan (2303133)
+"""
 
 from pydantic import BaseModel, ConfigDict
 

@@ -1,4 +1,7 @@
-"""SQLAlchemy Message model."""
+"""SQLAlchemy Message model (2303133 - Tahsan).
+
+Developer: Tahsan (2303133)
+"""
 
 from datetime import datetime
 
