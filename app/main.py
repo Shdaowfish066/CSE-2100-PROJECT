@@ -1,6 +1,7 @@
 # FastAPI application entry point
 from fastapi import FastAPI, Request, status
 from fastapi.responses import JSONResponse
+from fastapi.middleware.cors import CORSMiddleware
 from pydantic import ValidationError
 
 from app.database import Base, engine
@@ -17,12 +18,22 @@ from app.routers import (
     files_router,
     moderation_router,
 )
+from app.routers.r_2303133_websocket import router as websocket_router
 from app.config import settings
 
 # Ensure database tables are created on startup (models must be imported first)
 Base.metadata.create_all(bind=engine)
 
 app = FastAPI(title=settings.app_name, version="1.0.0")
+
+# Add CORS middleware for WebSocket and browser requests
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],  # Allow all origins for development
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 
 @app.exception_handler(ValidationError)
@@ -51,3 +62,4 @@ app.include_router(comments_router_emon)
 app.include_router(messages_router)
 app.include_router(files_router)
 app.include_router(moderation_router)
+app.include_router(websocket_router)
