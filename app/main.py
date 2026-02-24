@@ -1,4 +1,3 @@
-# FastAPI application entry point
 from fastapi import FastAPI, Request, status
 from fastapi.responses import JSONResponse
 from fastapi.middleware.cors import CORSMiddleware
@@ -17,16 +16,15 @@ from app.routers import (
     messages_router,
     files_router,
     moderation_router,
+    communities_router,
 )
-from app.routers.r_2303133_websocket import router as websocket_router
+from app.routers.websocket import router as websocket_router
 from app.config import settings
 
-# Ensure database tables are created on startup (models must be imported first)
 Base.metadata.create_all(bind=engine)
 
 app = FastAPI(title=settings.app_name, version="1.0.0")
 
-# Add CORS middleware for WebSocket and browser requests
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],  # Allow all origins for development
@@ -35,10 +33,8 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-
 @app.exception_handler(ValidationError)
 async def validation_exception_handler(request: Request, exc: ValidationError):
-    """Custom handler for validation errors - returns 400 with 'Invalid email' for email errors."""
     errors = exc.errors()
     for error in errors:
         if "email" in error.get("loc", ()):
@@ -51,7 +47,6 @@ async def validation_exception_handler(request: Request, exc: ValidationError):
         content={"detail": "Validation error"}
     )
 
-
 app.include_router(auth_router)
 app.include_router(posts_router)
 app.include_router(users_router)
@@ -62,4 +57,5 @@ app.include_router(comments_router_emon)
 app.include_router(messages_router)
 app.include_router(files_router)
 app.include_router(moderation_router)
+app.include_router(communities_router)
 app.include_router(websocket_router)

@@ -1,5 +1,3 @@
-"""Storage helpers for media uploads."""
-
 from __future__ import annotations
 
 import os
@@ -35,9 +33,7 @@ ALLOWED_MEDIA_EXTENSIONS = {
 	".mov",
 }
 
-
 def is_allowed_media(upload_file: UploadFile) -> bool:
-	"""Validate media type based on MIME and file extension."""
 	if not upload_file.filename or not upload_file.content_type:
 		return False
 	ext = Path(upload_file.filename).suffix.lower()
@@ -46,9 +42,7 @@ def is_allowed_media(upload_file: UploadFile) -> bool:
 		and ext in ALLOWED_MEDIA_EXTENSIONS
 	)
 
-
 def save_upload_file(upload_file: UploadFile, upload_dir: str = "uploads") -> tuple[str, int]:
-	"""Save uploaded file to disk and return (path, size)."""
 	os.makedirs(upload_dir, exist_ok=True)
 	ext = Path(upload_file.filename).suffix.lower()
 	stored_name = f"{uuid.uuid4().hex}{ext}"
