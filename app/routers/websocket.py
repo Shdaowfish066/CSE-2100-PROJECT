@@ -4,7 +4,7 @@ from app.database import engine
 from app.models.message import Message
 from app.models.user import User
 from app.utils.websocket import connection_manager
-from datetime import datetime
+from datetime import datetime, timezone
 import json
 
 router = APIRouter(prefix="/ws", tags=["websocket"])
@@ -63,7 +63,7 @@ async def websocket_endpoint(
                 sender_id=current_user_id,
                 recipient_id=other_user_id,
                 content=content,
-                created_at=datetime.utcnow(),
+                created_at=datetime.now(timezone.utc),
                 is_read=False
             )
             db.add(message)

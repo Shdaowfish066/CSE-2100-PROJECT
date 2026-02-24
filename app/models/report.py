@@ -1,4 +1,4 @@
-from datetime import datetime
+from datetime import datetime, timezone
 import enum
 
 from sqlalchemy import Column, DateTime, Enum, ForeignKey, Integer, String, Text
@@ -21,7 +21,7 @@ class Report(Base):
     reason = Column(String(255), nullable=False)
     description = Column(Text, nullable=True)
     status = Column(Enum(ReportStatus), default=ReportStatus.PENDING)
-    created_at = Column(DateTime, default=datetime.utcnow)
+    created_at = Column(DateTime, default=lambda: datetime.now(timezone.utc))
 
     reporter = relationship("User")
     post = relationship("Post")

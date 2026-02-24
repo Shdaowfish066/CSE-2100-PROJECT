@@ -1,4 +1,4 @@
-from datetime import datetime
+from datetime import datetime, timezone
 import enum
 
 from sqlalchemy import Column, DateTime, Enum, ForeignKey, Integer
@@ -18,7 +18,7 @@ class Vote(Base):
     post_id = Column(Integer, ForeignKey("posts.id"), nullable=True, index=True)
     comment_id = Column(Integer, ForeignKey("comments.id"), nullable=True, index=True)
     vote_type = Column(Enum(VoteType), nullable=False)
-    created_at = Column(DateTime, default=datetime.utcnow, nullable=False)
+    created_at = Column(DateTime, default=lambda: datetime.now(timezone.utc), nullable=False)
 
     user = relationship("User")
     post = relationship("Post")

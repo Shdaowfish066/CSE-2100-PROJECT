@@ -1,5 +1,5 @@
 import enum
-from datetime import datetime
+from datetime import datetime, timezone
 
 from sqlalchemy import Column, DateTime, Enum, ForeignKey, Integer, String, Text, UniqueConstraint
 from sqlalchemy.orm import relationship
@@ -19,7 +19,7 @@ class Community(Base):
     name = Column(String(100), unique=True, nullable=False, index=True)
     description = Column(Text, nullable=True)
     captain_id = Column(Integer, ForeignKey("users.id"), nullable=False, index=True)
-    created_at = Column(DateTime, default=datetime.utcnow, nullable=False)
+    created_at = Column(DateTime, default=lambda: datetime.now(timezone.utc), nullable=False)
 
     captain = relationship("User", foreign_keys=[captain_id])
     members = relationship("CommunityMember", back_populates="community", cascade="all, delete-orphan")
@@ -33,7 +33,7 @@ class CommunityMember(Base):
     community_id = Column(Integer, ForeignKey("communities.id"), nullable=False, index=True)
     user_id = Column(Integer, ForeignKey("users.id"), nullable=False, index=True)
     role = Column(Enum(MemberRole), nullable=False, default=MemberRole.member)
-    joined_at = Column(DateTime, default=datetime.utcnow, nullable=False)
+    joined_at = Column(DateTime, default=lambda: datetime.now(timezone.utc), nullable=False)
 
     __table_args__ = (UniqueConstraint("community_id", "user_id", name="uq_community_user"),)
 
@@ -49,7 +49,7 @@ class CommunityPost(Base):
     title = Column(String(255), nullable=False)
     content = Column(Text, nullable=False)
     owner_id = Column(Integer, ForeignKey("users.id"), nullable=False, index=True)
-    created_at = Column(DateTime, default=datetime.utcnow, nullable=False)
+    created_at = Column(DateTime, default=lambda: datetime.now(timezone.utc), nullable=False)
 
     community = relationship("Community", back_populates="posts")
     owner = relationship("User")
